@@ -14,11 +14,4 @@ export const QuestionText = styled.h2`
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  color: #fff;
 `;

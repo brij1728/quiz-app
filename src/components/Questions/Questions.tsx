@@ -1,40 +1,47 @@
 import { QuestionContainer, QuestionText } from "./styles";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Question } from "../../types";
 import { getQuestions } from "../../api";
 
 export const Questions = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  console.log(questions);
+  const isMounted = useRef(false);
+
+  const fetchQuestions = useCallback(async () => {
+    const data = await getQuestions();
+    console.log("fetchQuestions called");
+    setQuestions(data);
+  }, [setQuestions]);
 
   useEffect(() => {
-    const fetchQuestions = async () => {
-      const data = await getQuestions();
-      console.log(data);
+    console.log("useEffect called");
+    if (!isMounted.current) {
+      isMounted.current = true;
+      fetchQuestions();
+    }
+  }, [fetchQuestions]);
 
-      setQuestions(data);
-    };
-
-    fetchQuestions();
-  }, []);
+  console.log(`questions: ${questions}`);
 
   return (
     <QuestionContainer>
       <h1>Questions</h1>
-      {questions && questions.length > 0 ? (
+      {questions && questions.length < 0 ? (
+        <div>No questions</div>
+      ) : (
         questions.map((question) => {
+          console.log(`question: ${question.question_text}`);
           return (
             <div key={question.id}>
               <QuestionText>{question.question_text}</QuestionText>
             </div>
           );
         })
-      ) : (
-        <div>No questions</div>
       )}
 
       <QuestionText>What is the capital of India?</QuestionText>
+      <h3>Answer</h3>
     </QuestionContainer>
   );
 };

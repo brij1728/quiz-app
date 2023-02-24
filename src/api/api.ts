@@ -4,7 +4,7 @@ const directusUrl = "https://yom2czlz.directus.app/items";
 
 export const getQuestions = async (): Promise<Question[]> => {
   const questionQueryParams =
-    "1?fields=id,question_text,answers.answer_text,answers.is_correct";
+    "?fields=id,question_text,answers.answer_text,answers.is_correct";
 
   try {
     const response = await fetch(
