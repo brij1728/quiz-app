@@ -1,4 +1,12 @@
-import { QuestionContainer, QuestionText } from "./styles";
+import {
+  AnswerText,
+  AnswersContainer,
+  Container,
+  QuestionContainer,
+  QuestionText,
+  RadioButton,
+  RadioButtonLabel,
+} from "./styles";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Question } from "../../types";
@@ -25,8 +33,7 @@ export const Questions = () => {
   console.log(`questions: ${questions}`);
 
   return (
-    <QuestionContainer>
-      <h1>Questions</h1>
+    <Container>
       {questions && questions.length < 0 ? (
         <div>No questions</div>
       ) : (
@@ -34,14 +41,23 @@ export const Questions = () => {
           console.log(`question: ${question.question_text}`);
           return (
             <div key={question.id}>
-              <QuestionText>{question.question_text}</QuestionText>
+              <QuestionContainer>
+                <QuestionText>{question.question_text}</QuestionText>
+              </QuestionContainer>
+              <AnswersContainer>
+                {question.answers.map((ans) => {
+                  return (
+                    <RadioButtonLabel key={ans.id}>
+                      <RadioButton />
+                      <AnswerText>{ans.answer_text}</AnswerText>;
+                    </RadioButtonLabel>
+                  );
+                })}
+              </AnswersContainer>
             </div>
           );
         })
       )}
-
-      <QuestionText>What is the capital of India?</QuestionText>
-      <h3>Answer</h3>
-    </QuestionContainer>
+    </Container>
   );
 };
