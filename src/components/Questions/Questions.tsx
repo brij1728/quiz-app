@@ -14,6 +14,8 @@ import { getQuestions } from "../../api";
 
 export const Questions = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [selectedAnswer, setSelectedAnswer] = useState<string>("");
+
   const isMounted = useRef(false);
 
   const fetchQuestions = useCallback(async () => {
@@ -32,6 +34,12 @@ export const Questions = () => {
 
   console.log(`questions: ${questions}`);
 
+  const toggleSelectedAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedAnswer(e.target.value);
+  };
+
+  console.log(`selectedAnswer: ${selectedAnswer}`);
+
   return (
     <Container>
       {questions && questions.length < 0 ? (
@@ -48,8 +56,14 @@ export const Questions = () => {
                 {question.answers.map((ans) => {
                   return (
                     <RadioButtonLabel key={ans.id}>
-                      <RadioButton />
-                      <AnswerText>{ans.answer_text}</AnswerText>;
+                      <RadioButton
+                        name={selectedAnswer}
+                        value={ans.answer_text}
+                        id={ans.id.toString()}
+                        checked={selectedAnswer === ans.answer_text}
+                        onChange={(event) => toggleSelectedAnswer(event)}
+                      />
+                      <AnswerText>{ans.answer_text}</AnswerText>
                     </RadioButtonLabel>
                   );
                 })}

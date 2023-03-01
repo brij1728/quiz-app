@@ -1,31 +1,25 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+   *, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
 
-    html {
-        font-size: 62.5%;
-    }
 
-    body {
-        font-family: 'Roboto', sans-serif;
-        font-size: 1.6rem;
-        background-color: #f5f5f5;
-    }
+}
+html {
+  /* background: ${({ theme }) => theme.primaryColors.primaryBackground}; */
+  scroll-behavior: smooth;
 
-    a {
-        text-decoration: none;
-    }
+}
 
-    ul {
-        list-style: none;
-    }
-
-    button {
-        cursor: pointer;
-    }
+body {
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow-x: hidden;
+  background-color: ${({ theme }) => theme.primaryColors.primaryBackground};
+  
+}
 `;

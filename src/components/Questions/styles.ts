@@ -6,6 +6,9 @@ export const Container = styled.div`
   flex-flow: column wrap;
   justify-content: center;
   align-items: flex-start;
+
+  row-gap: 20px;
+  padding: 20px;
 `;
 
 export const QuestionContainer = styled.div`
@@ -28,18 +31,23 @@ export const AnswersContainer = styled.div`
   flex: 1;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
-  background-color: #f5f5f5;
+  padding: 10px;
+
+  /* background-color: #f5f5f5; */
 `;
 
 export const AnswerText = styled.h3`
   flex: 1;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+
+  text-align: center;
+  text-transform: capitalize;
 `;
 
 export const RadioButtonLabel = styled.label`

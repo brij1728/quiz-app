@@ -1,3 +1,9 @@
+import { Container } from "./styles";
+
 export const Header = () => {
-  return <div>Header</div>;
+  return (
+    <Container>
+      <p>Quiz: Questions with single and multiple-choice answers </p>
+    </Container>
+  );
 };
