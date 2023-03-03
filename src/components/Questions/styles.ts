@@ -47,7 +47,7 @@ export const AnswerText = styled.h3`
   align-items: center;
 
   text-align: center;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -70,4 +70,21 @@ export const RadioButton = styled.input.attrs({ type: "radio" })`
   width: 20px;
   height: 20px;
   margin-right: 10px;
+`;
+
+export const SelectedAnswerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+`;
+
+export const SelectedAnswerText = styled.p`
+  font-size: 18px;
+  font-weight: bold;
 `;
